@@ -27,5 +27,8 @@
 using namespace std;
 
 void get_current_path(string *str);
+int mpwd(vector<string>& cmd);
+int mcd(vector<string>& cmd);
+void mexec(vector<string>& args);
 
 #endif //MYSHELL_HELPERS_H
