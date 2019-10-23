@@ -12,11 +12,12 @@
 #include <string>
 #include <map>
 #include <boost/algorithm/string.hpp>
+#include <readline/readline.h>
+#include <readline/history.h>
 
-using namespace std;
 
-void get_current_path(string *str);
+void get_current_path(std::string *str);
 bool is_number(const std::string& s);
-void msetenv(std::map<string, string>& value, const string& line);
+void msetenv(std::map<std::string, std::string>& value, const std::string& line);
 
 #endif //MYSHELL_HELPERS_H
