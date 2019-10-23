@@ -11,6 +11,7 @@
 #include <sstream>
 #include <string>
 #include <map>
+#include <boost/algorithm/string.hpp>
 
 using namespace std;
 

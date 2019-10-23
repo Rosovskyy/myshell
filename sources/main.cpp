@@ -1,11 +1,11 @@
 #include "../headers/helpers.h"
 #include "../headers/functions.h"
 
-void execute(std::vector<std::string>& args) {
+void execute(vector<string>& args) {
     int err = 0;
-    std::string cmd = args[0];
+    string cmd = args[0];
     if (cmd == "merrno") {
-        std::cout << err << std::endl;
+        cout << err << endl;
     } else if (cmd == "mpwd") {
         err = mpwd(args);
     } else if (cmd == "mcd") {
@@ -17,36 +17,39 @@ void execute(std::vector<std::string>& args) {
     } else if (cmd == "mexport") {
         mexport(args);
     } else if (cmd == "help") {
-            std::cout << "Program MyShell. version 1.0 beta release\n" << std::endl;
-            std::cout << "merrno [-h|--help] \t returns exit status of the command" << std::endl;
-            std::cout << "mpwd [-h|--help] \t returns current directory path" << std::endl;
-            std::cout << "mcd <path> [-h|--help] \t change dir to <path>" << std::endl;
-            std::cout << "mexit [exit code] [-h|--help] \t exit myshell\n" << std::endl;
+            cout << "* merrno [-h|--help] - print the end code of the last program or command\n"
+                    "* mpwd [-h|--help] - print the current path\n"
+                    "* mcd [-h|--help] - move the\n"
+                    "* mexit [end code] [-h|--help] - exit myshell\n"
+                    "* mecho [text|$<var_name>] [text|$<var_name>] [text|$<var_name>] - print arguments or value of variable\n"
+                    "* mexport <var_name>[=VAL] - add global variable" << endl;
     }
 }
 
 int main(int argc, char *argv[]) {
 
-    std::string separator1("");
-    std::string separator2(" ");
-    std::string separator3("\"\'");
+    string nun("");
+    string space(" ");
+    string slash("\"\'");
 
-    std::string s;
+    string s;
     while (true) {
-        std::string command;
-        std::vector<std::string> args;
+        string command;
+        vector<string> args;
         get_current_path(&s);
-        std::cout << s << " $ ";
-        getline(std::cin, command);
-        if (std::cin.fail() || std::cin.eof()) {
-            std::cin.clear();
+        cout << s << " $ ";
+        getline(cin, command);
+        if (cin.fail() || cin.eof()) {
+            cin.clear();
             break;
         } else if (s.empty()) {
             exit(-15);
         } else {
-            boost::escaped_list_separator<char> els(separator1,separator2,separator3);
-            boost::tokenizer<boost::escaped_list_separator<char>> tok(command, els);
-            for (auto &t : tok) {
+
+            boost::escaped_list_separator<char> separators(nun,space,slash);
+            boost::tokenizer<boost::escaped_list_separator<char>> arguments(command, separators);
+
+            for (auto &t : arguments) {
                 args.push_back(t);
             }
             execute(args);

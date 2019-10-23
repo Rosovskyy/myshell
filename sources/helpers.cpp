@@ -8,10 +8,10 @@ void get_current_path(string *str) {
     *str = boost::filesystem::current_path().string();
 }
 
-bool is_number(const std::string& s)
+bool is_number(const string& s)
 {
-    return !s.empty() && std::find_if(s.begin(),
-                                      s.end(), [](char c) { return !std::isdigit(c); }) == s.end();
+    return !s.empty() && find_if(s.begin(),
+                                      s.end(), [](char c) { return !isdigit(c); }) == s.end();
 }
 
 vector<string> splitString(string line, string delim) {

@@ -5,38 +5,20 @@
 #include "../headers/variables.h"
 #include "../headers/helpers.h"
 
-void splitValues(std::map<string, string>& variables, const string& line) {
-    vector<string> res;
-    std::size_t current, previous = 0;
-    std::string delim = "=";
-    current = line.find(delim);
-    while (current != std::string::npos) {
-        res.push_back(line.substr(previous, current - previous));
-        previous = current + 1;
-        current = line.find(delim, previous);
-    }
-    res.push_back(line.substr(previous, current - previous));
-    variables[res.front()] = res.back();
+void splitValues(map<string, string>& variables, const string& command) {
+    vector<string> variable;
+    boost::split(variable, command, boost::is_any_of("="));
+    variables[variable.front()] = variable.back();
 }
 
-void msetenv(string line, map<string, string>& value) {
-    if (line.find('=') != string::npos) {
-        vector<string> res;
-
-        std::size_t current, previous = 0;
-        std::string delim = "=";
-        current = line.find(delim);
-        while (current != std::string::npos) {
-            res.push_back(line.substr(previous, current - previous));
-            previous = current + 1;
-            current = line.find(delim, previous);
-        }
-        res.push_back(line.substr(previous, current - previous));
-
-        setenv(res.front().c_str(), res.back().c_str(), 1);
+void msetenv(string command, map<string, string>& value) {
+    if (command.find('=') != string::npos) {
+        vector<string> variable;
+        boost::split(variable, command, boost::is_any_of("="));
+        setenv(variable.front().c_str(), variable.back().c_str(), 1);
     } else {
-        if (value.count(line) > 0) {
-            setenv(line.c_str(), value[line].c_str(), 0);
+        if (value.count(command) > 0) {
+            setenv(command.c_str(), value[command].c_str(), 0);
         }
     }
 }
