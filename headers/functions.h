@@ -16,8 +16,8 @@ using namespace std;
 
 int mpwd(vector<string>& cmd);
 int mcd(vector<string>& cmd);
-void mexec(vector<string>& args);
+void mexec(vector<string>& args, std::map<string, string>& vars);
 void mexit(vector<string>& args);
-void mexport(std::vector<std::string>& args);
+void mexport(std::vector<std::string>& args, std::map<string, string>& vars);
 
 #endif //OS_MYSHELL_FUNCTIONS_H

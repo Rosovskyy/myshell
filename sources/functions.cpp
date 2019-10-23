@@ -46,7 +46,7 @@ int mcd(vector<string>& cmd) {
     return -1;
 }
 
-void mexec(vector<string>& args) {
+void mexec(vector<string>& args, std::map<string, string>& vars) {
     if (args[0].at(0) == 'm') {
         args[0] = args[0].replace(0, 1, "");
     }
@@ -60,7 +60,14 @@ void mexec(vector<string>& args) {
     } else {
         vector<const char*> c_func_args;
         for (int i = 0; i < args.size(); i++) {
-            const char *c_val = args[i].c_str();
+            string arg = args[i];
+            const char *c_val;
+            if (*arg.begin() == '$') {
+                arg.erase(0, 1);
+                c_val = vars[arg].c_str();
+            } else {
+                c_val = arg.c_str();
+            }
             c_func_args.push_back(c_val);
             if (i == args.size() - 1) {
                 c_func_args.push_back(nullptr);
@@ -99,13 +106,12 @@ void mexit(vector<string>& args){
     cout << WRONG_TXT << " mexit <exit_code> [-h, --help]";
 }
 
-void mexport(vector<string>& args) {
+void mexport(vector<string>& args, std::map<string, string>& vars) {
     args.erase(args.begin());
-    map<string, string> variables;
     for (int i = 0; i < args.size(); i++) {
         if (args[i].find('=') != string::npos) {
-            splitValues(variables, args[i]);
+            splitValues(vars, args[i]);
         }
-        msetenv(args[i], variables);
+        msetenv(args[i], vars);
     }
 }

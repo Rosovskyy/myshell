@@ -1,7 +1,7 @@
 #include "../headers/helpers.h"
 #include "../headers/functions.h"
 
-void execute(vector<string>& args) {
+void execute(vector<string>& args, std::map<string, string>& vars) {
     int err = 0;
     string cmd = args[0];
     if (cmd == "merrno") {
@@ -13,9 +13,9 @@ void execute(vector<string>& args) {
     } else if (cmd == "mexit") {
         mexit(args);
     } else if (cmd == "mecho") {
-        mexec(args);
+        mexec(args, vars);
     } else if (cmd == "mexport") {
-        mexport(args);
+        mexport(args, vars);
     } else if (cmd == "help") {
             cout << "* merrno [-h|--help] - print the end code of the last program or command\n"
                     "* mpwd [-h|--help] - print the current path\n"
@@ -27,11 +27,8 @@ void execute(vector<string>& args) {
 }
 
 int main(int argc, char *argv[]) {
-
-    string nun("");
-    string space(" ");
-    string slash("\"\'");
-
+    string nun(""), space(" "), slash("\"\'");
+    map<string, string> globalVariables;
     string s;
     while (true) {
         string command;
@@ -45,14 +42,12 @@ int main(int argc, char *argv[]) {
         } else if (s.empty()) {
             exit(-15);
         } else {
-
             boost::escaped_list_separator<char> separators(nun,space,slash);
             boost::tokenizer<boost::escaped_list_separator<char>> arguments(command, separators);
-
             for (auto &t : arguments) {
                 args.push_back(t);
             }
-            execute(args);
+            execute(args, globalVariables);
         }
     }
 
