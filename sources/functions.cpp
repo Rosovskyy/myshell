@@ -12,7 +12,7 @@ int mpwd(vector<string>& cmd) {
         cout << path << endl;
         return 0;
     }
-    if ((cmd.size() == 1) && ((*cmd.begin() == "-h") || (*cmd.begin() == "--help"))) {
+    if ((cmd.size() == 1) && (cmd[0].at(0) == '-')) {
         cout << "The command returns the current path." << endl;
         return 0;
     }
@@ -57,8 +57,29 @@ void mexec(vector<string>& args) {
                 c_func_args.push_back(nullptr);
             }
         }
-        execvp(args[0].c_str(), const_cast<char* const*>(c_func_args.data()));
-        std::cerr << "Bad arguments" << endl;
+        char* const* args_data = const_cast<char* const*>(c_func_args.data());
+        const char* cmd = args[0].c_str();
+        execvp(cmd, args_data);
+        cerr << "Bad arguments" << endl;
         exit(EXIT_FAILURE);
     }
+}
+
+void mexit(vector<string>& args) {
+    args.erase(args.begin());
+    string exit_error;
+    if (args.size() == 2) {
+        if (args[1].at(0) == '-') {
+            cout << "The function exits the shell" << endl;
+            exit_error = args[0];
+        }
+    } else if (args.size() == 1) {
+        if (is_number(args[0])) {
+            exit_error = args[0];
+        } else if (args[0].at(0) == '-') {
+            cout << "The function exits the shell" << endl;
+        }
+    }
+    cerr << exit_error << endl;
+    exit(stoi(exit_error));
 }

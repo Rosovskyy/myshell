@@ -16,7 +16,7 @@ void execute(vector<string>& args) {
     } else if (cmd == "mcd") {
         err = mcd(args);
     } else if (cmd == "mexit") {
-        cout << "exit" << endl;
+        mexit(args);
     } else if (cmd == "mecho") {
         mexec(args);
     } else if (cmd == "mexport") {

@@ -7,8 +7,8 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include <boost/filesystem.hpp>
-#include <mach-o/dyld.h>
 #include <functional>
 #include <unordered_map>
 #include <stdlib.h>
@@ -27,8 +27,10 @@
 using namespace std;
 
 void get_current_path(string *str);
+bool is_number(const std::string& s);
 int mpwd(vector<string>& cmd);
 int mcd(vector<string>& cmd);
 void mexec(vector<string>& args);
+void mexit(vector<string>& args);
 
 #endif //MYSHELL_HELPERS_H
