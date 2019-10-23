@@ -1,5 +1,5 @@
-
-#include "../headers/helpers.h"
+#include "../headers/functions.h"
+#include "../headers/variables.h"
 
 #define WRONG_TXT "Command has been improperly used. Use "
 
@@ -85,7 +85,7 @@ void mexit(std::vector<std::string>& args){
             std::cout << "Exits the shell with return code <code> \n";
             return;
         }
-        else if ( std::all_of(args[0].begin(), args[0].end(), ::isdigit)){
+        else if (std::all_of(args[0].begin(), args[0].end(), ::isdigit)){
             std::stringstream tmp(args[0]);
             int x = 0;
             tmp >> x;
@@ -98,4 +98,15 @@ void mexit(std::vector<std::string>& args){
                 return;
     }
     std::cout << WRONG_TXT << " mexit <exit_code> [-h, --help]";
+}
+
+void mexport(std::vector<std::string>& args) {
+    args.erase(args.begin());
+    map<string, string> variables;
+    for (int i = 0; i < args.size(); i++) {
+        if (args[i].find('=') != string::npos) {
+            splitValues(variables, args[i]);
+        }
+        msetenv(args[i], variables);
+    }
 }

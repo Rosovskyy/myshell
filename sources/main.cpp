@@ -1,4 +1,5 @@
 #include "../headers/helpers.h"
+#include "../headers/functions.h"
 
 void execute(std::vector<std::string>& args) {
     int err = 0;
@@ -14,7 +15,7 @@ void execute(std::vector<std::string>& args) {
     } else if (cmd == "mecho") {
         mexec(args);
     } else if (cmd == "mexport") {
-        std::cout << "export" << std::endl;
+        mexport(args);
     } else if (cmd == "help") {
             std::cout << "Program MyShell. version 1.0 beta release\n" << std::endl;
             std::cout << "merrno [-h|--help] \t returns exit status of the command" << std::endl;
@@ -54,15 +55,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
-//#include <functional>
-//#include <unordered_map>
-//#include <stdlib.h>
-//#include <stdio.h>
-//#include <vector>
-
-//#include <fstream>
-//#include <sstream>
-//#include <map>
-//#include <errno.h>
-//#include <fcntl.h>

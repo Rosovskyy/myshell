@@ -13,3 +13,10 @@ bool is_number(const std::string& s)
     return !s.empty() && std::find_if(s.begin(),
                                       s.end(), [](char c) { return !std::isdigit(c); }) == s.end();
 }
+
+vector<string> splitString(string line, string delim) {
+    istringstream iss(line);
+    vector<string> res((istream_iterator<string>(iss)),
+                                 istream_iterator<string>());
+    return res
+}

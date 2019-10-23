@@ -9,6 +9,6 @@ find_package(Boost COMPONENTS system filesystem REQUIRED)
 INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 
 
-add_executable(myshell sources/main.cpp sources/functions.cpp headers/helpers.h ${Boost_LIBRARIES} ${Boost_FILESYSTEM_LIBRARY})
+add_executable(myshell sources/main.cpp sources/functions.cpp headers/functions.h headers/helpers.h sources/variables.cpp headers/variables.h ${Boost_LIBRARIES} ${Boost_FILESYSTEM_LIBRARY})
 target_link_libraries(myshell  boost_system boost_filesystem)
 
