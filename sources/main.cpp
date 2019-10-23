@@ -53,7 +53,6 @@ int main(int argc, char *argv[]) {
     char* buf;
     while ((buf = readline(" $ ")) != nullptr) {
         std::vector<std::string> args;
-        get_current_path(&s);
         if (strlen(buf) > 0) {
             add_history(buf);
         }
@@ -70,6 +69,7 @@ int main(int argc, char *argv[]) {
         }
         execute(args, globalVariables);
         free(buf);
+        get_current_path(&s);
         std::cout << s;
     }
     return 0;
