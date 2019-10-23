@@ -1,7 +1,14 @@
 cmake_minimum_required(VERSION 3.12)
 project(myshell)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lboost_system -lboost_filesystem")
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -lboost_filesystem -lboost_system")
+set(CMAKE_CXX_STANDARD 17)
+include_directories(headers)
 
-add_executable(myshell sources/main.cpp sources/helpers.cpp sources/functions.cpp headers/helpers.h)
+find_package(Boost COMPONENTS system filesystem REQUIRED)
+INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
+
+
+add_executable(myshell sources/main.cpp sources/functions.cpp headers/functions.h ${Boost_LIBRARIES} ${Boost_FILESYSTEM_LIBRARY})
+target_link_libraries(myshell  boost_system boost_filesystem)
+

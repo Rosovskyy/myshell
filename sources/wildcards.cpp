@@ -3,7 +3,6 @@
 #include <experimental/filesystem>
 
 namespace fs = std::experimental::filesystem;
-using namespace std;
 
 bool wildcard_matches(const std::string &pattern, const std::string &filename);
 std::vector<std::string> parse_args(std::vector<std::string> &wildcards);
