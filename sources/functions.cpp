@@ -46,8 +46,18 @@ int mcd(vector<string>& cmd) {
     return -1;
 }
 
-void mexec(vector<string>& args, std::map<string, string>& vars) {
-    if (args[0].at(0) == 'm') {
+void setPath() {
+    auto env = getenv("PATH");
+    string env_path;
+    if (env != nullptr) {
+        env_path = env;
+    }
+    env_path += ":.";
+    setenv("PATH", env_path.c_str(), 1);
+}
+
+void mecho(vector<string>& args, std::map<string, string>& vars) {
+    if (args[0].at(0) == 'm' && args[0] != "mycat") {
         args[0] = args[0].replace(0, 1, "");
     }
     pid_t pid = fork();
@@ -58,15 +68,17 @@ void mexec(vector<string>& args, std::map<string, string>& vars) {
         int status;
         waitpid(pid, &status, 0);
     } else {
+        setPath();
         vector<const char*> c_func_args;
         for (int i = 0; i < args.size(); i++) {
+            cout << "value: " << args[i] << endl;
             string arg = args[i];
             const char *c_val;
             if (*arg.begin() == '$') {
                 arg.erase(0, 1);
                 c_val = vars[arg].c_str();
             } else {
-                c_val = arg.c_str();
+                c_val = args[i].c_str();
             }
             c_func_args.push_back(c_val);
             if (i == args.size() - 1) {
@@ -114,4 +126,8 @@ void mexport(vector<string>& args, std::map<string, string>& vars) {
         }
         msetenv(args[i], vars);
     }
+}
+
+void mexec_script(vector<string>& args) {
+
 }

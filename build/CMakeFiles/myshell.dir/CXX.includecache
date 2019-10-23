@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Volumes/Transcend/UCU/3year/1sem/OS/HW/myshell/headers/functions.h
+iostream
+-
+string
+-
+boost/filesystem.hpp
+-
+vector
+-
+sstream
+-
+cstdlib
+-
+map
+-
+
+/Volumes/Transcend/UCU/3year/1sem/OS/HW/myshell/headers/variables.h
+iostream
+-
+string
+-
+vector
+-
+boost/algorithm/string.hpp
+-
+map
+-
+
+/Volumes/Transcend/UCU/3year/1sem/OS/HW/myshell/sources/functions.cpp
+../headers/functions.h
+/Volumes/Transcend/UCU/3year/1sem/OS/HW/myshell/headers/functions.h
+../headers/variables.h
+/Volumes/Transcend/UCU/3year/1sem/OS/HW/myshell/headers/variables.h
+

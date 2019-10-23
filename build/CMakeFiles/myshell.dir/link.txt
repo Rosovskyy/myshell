@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++    -lboost_filesystem -lboost_system -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/myshell.dir/sources/main.cpp.o CMakeFiles/myshell.dir/sources/functions.cpp.o CMakeFiles/myshell.dir/sources/variables.cpp.o  -o myshell -lboost_system -lboost_filesystem 

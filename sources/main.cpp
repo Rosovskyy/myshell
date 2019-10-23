@@ -13,7 +13,7 @@ void execute(vector<string>& args, std::map<string, string>& vars) {
     } else if (cmd == "mexit") {
         mexit(args);
     } else if (cmd == "mecho") {
-        mexec(args, vars);
+        mecho(args, vars);
     } else if (cmd == "mexport") {
         mexport(args, vars);
     } else if (cmd == "help") {
@@ -23,6 +23,8 @@ void execute(vector<string>& args, std::map<string, string>& vars) {
                     "* mexit [end code] [-h|--help] - exit myshell\n"
                     "* mecho [text|$<var_name>] [text|$<var_name>] [text|$<var_name>] - print arguments or value of variable\n"
                     "* mexport <var_name>[=VAL] - add global variable" << endl;
+    } else {
+        mecho(args, vars);
     }
 }
 
