@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 
     std::string separator1("");
     std::string separator2(" ");
-    std::string separator3("\"\'");
+    std::string separator3("\"");
 
     std::string s;
     while (true) {

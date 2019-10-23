@@ -39,7 +39,6 @@ std::vector<std::string> parse_args(std::vector<std::string> &wildcards){
             if (wildcard_matches(" " + file_name, " " + file_no_path)) { // dynamic alg doesnt work if * is a first sign so add ' '
                 final_ar.emplace_back(path+file_no_path);
                 found = true;
-//                std::cout << file_no_path << " " << file_name << "\n";
             }
         }
         if (!found){
