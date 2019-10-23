@@ -11,13 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c6333026-8e78-4d9e-9897-f4ea9d0656fd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/myshell.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/myshell.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/myshell.dir/sources/functions.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/myshell.dir/sources/functions.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/myshell.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/myshell.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/myshell.dir/sources/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/myshell.dir/sources/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/myshell" beforeDir="false" afterPath="$PROJECT_DIR$/build/myshell" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/functions.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sources/functions.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sources/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sources/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -64,7 +60,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="6474" />
+          <entry key="cpp" value="6515" />
           <entry key="h" value="361" />
           <entry key="txt" value="102" />
         </counts>
@@ -72,7 +68,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="102" />
-          <entry key="ObjectiveC" value="6835" />
+          <entry key="ObjectiveC" value="6876" />
         </counts>
       </usages-collector>
     </session>
@@ -82,8 +78,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sources/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+            <state relative-caret-position="248">
+              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -255,12 +251,12 @@
       <workItem from="1571860613565" duration="2129000" />
       <workItem from="1571862777820" duration="17000" />
       <workItem from="1571862989524" duration="171000" />
-      <workItem from="1571907021329" duration="2392000" />
+      <workItem from="1571907021329" duration="3024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30861000" />
+    <option name="totallyTimeSpent" value="31493000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -384,8 +380,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sources/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+        <state relative-caret-position="248">
+          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

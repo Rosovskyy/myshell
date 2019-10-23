@@ -48,10 +48,10 @@ int main(int argc, char *argv[]) {
         boost::escaped_list_separator<char> separators(nun,space,slash);
         boost::tokenizer<boost::escaped_list_separator<char>> arguments(command, separators);
         for (auto &t : arguments) {
+            cout << "value: " << t << endl;
             args.push_back(t);
         }
         execute(args, globalVariables);
-
         free(buf);
         cout << s;
     }
