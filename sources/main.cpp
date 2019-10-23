@@ -1,11 +1,4 @@
-
-#include "functions.h"
-
-#include <cstdio>
-#include <unistd.h>
-#include <boost/algorithm/string.hpp>
-#include <boost/tokenizer.hpp>
-
+#include "../headers/helpers.h"
 
 void execute(std::vector<std::string>& args) {
     int err = 0;

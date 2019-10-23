@@ -1,18 +1,11 @@
 
-#include "functions.h"
-
-#include <unistd.h>
-#include <sys/wait.h>
-#include <boost/filesystem.hpp>
-#include <locale>
-#include <sstream>
+#include "../headers/helpers.h"
 
 #define WRONG_TXT "Command has been improperly used. Use "
 
 void get_current_path(std::string *str) {
     *str = boost::filesystem::current_path().string();
 }
-
 
 int mpwd(std::vector<std::string>& cmd) {
     cmd.erase(cmd.begin());
@@ -22,21 +15,19 @@ int mpwd(std::vector<std::string>& cmd) {
         std::cout << path << std::endl;
         return 0;
     }
-<<<<<<< HEAD
     if ((cmd.size() == 1) && (cmd[0].at(0) == '-')) {
         cout << "The command returns the current path." << endl;
-=======
-    if ((cmd.size() == 1) && ((*cmd.begin() == "-h") || (*cmd.begin() == "--help"))) {
-        std::cout << "The command returns the current path." << std::endl;
->>>>>>> 5227cb6c196e545d6b37595e472660e32157d2e8
-        return 0;
+    } else {
+        cerr << "It is not such options. Use [-h, --help]." << endl;
     }
-    std::cerr << "It is not such options. Use [-h, --help]." << std::endl;
     return -1;
 }
 
 int mcd(std::vector<std::string>& cmd) {
     cmd.erase(cmd.begin());
+    if (cmd.empty()){
+        std::exit(0);
+    }
     std::cout << cmd.size();
     if (cmd.size() == 1 && chdir(cmd[0].c_str()) == 0) {
         return 0;
