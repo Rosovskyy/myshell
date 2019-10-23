@@ -71,7 +71,6 @@ void mecho(vector<string>& args, std::map<string, string>& vars) {
         setPath();
         vector<const char*> c_func_args;
         for (int i = 0; i < args.size(); i++) {
-            cout << "value: " << args[i] << endl;
             string arg = args[i];
             const char *c_val;
             if (*arg.begin() == '$') {

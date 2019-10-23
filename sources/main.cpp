@@ -28,30 +28,32 @@ void execute(vector<string>& args, std::map<string, string>& vars) {
     }
 }
 
+#include <readline/readline.h>
+#include <readline/history.h>
+
 int main(int argc, char *argv[]) {
     string nun(""), space(" "), slash("\"\'");
     map<string, string> globalVariables;
     string s;
-    while (true) {
-        string command;
+    get_current_path(&s);
+    cout << s;
+    char* buf;
+    while ((buf = readline(" $ ")) != nullptr) {
         vector<string> args;
         get_current_path(&s);
-        cout << s << " $ ";
-        getline(cin, command);
-        if (cin.fail() || cin.eof()) {
-            cin.clear();
-            break;
-        } else if (s.empty()) {
-            exit(-15);
-        } else {
-            boost::escaped_list_separator<char> separators(nun,space,slash);
-            boost::tokenizer<boost::escaped_list_separator<char>> arguments(command, separators);
-            for (auto &t : arguments) {
-                args.push_back(t);
-            }
-            execute(args, globalVariables);
+        if (strlen(buf) > 0) {
+            add_history(buf);
         }
-    }
+        string command(buf);
+        boost::escaped_list_separator<char> separators(nun,space,slash);
+        boost::tokenizer<boost::escaped_list_separator<char>> arguments(command, separators);
+        for (auto &t : arguments) {
+            args.push_back(t);
+        }
+        execute(args, globalVariables);
 
+        free(buf);
+        cout << s;
+    }
     return 0;
 }
