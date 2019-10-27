@@ -13,6 +13,9 @@ This program works like a real shell: it can read commands from stding and execu
   $ cmake -G"Unix Makefiles" ..
   $ make
   ```
+  
+## Libraries
+  * readline - ```sudo apt-get install libreadline-dev```
 
 ## Realization
   We wrote a program, that works like a real interpreter. It has different built in functions, like: merrno, mpwd, mcd, mexit,   mecho, mexport. It can also run various external files.
