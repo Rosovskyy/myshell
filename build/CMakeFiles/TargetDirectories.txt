@@ -1,0 +1,3 @@
+/Volumes/Transcend/UCU/3year/1sem/OS/HW/myshell/build/CMakeFiles/rebuild_cache.dir
+/Volumes/Transcend/UCU/3year/1sem/OS/HW/myshell/build/CMakeFiles/edit_cache.dir
+/Volumes/Transcend/UCU/3year/1sem/OS/HW/myshell/build/CMakeFiles/myshell.dir

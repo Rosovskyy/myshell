@@ -1,5 +1,6 @@
 #include "../headers/functions.h"
 #include "../headers/variables.h"
+#include "../headers/helpers.h"
 
 #define WRONG_TXT "Command has been improperly used. Use "
 
@@ -56,18 +57,42 @@ void setPath() {
     setenv("PATH", env_path.c_str(), 1);
 }
 
-void mecho(vector<string>& args, std::map<string, string>& vars) {
-    if (args[0].at(0) == 'm' && args[0] != "mycat") {
+void setInOut(int from, int to, bool out) {
+    if (out) {
+        if (from != -1) {
+            dup2(from, STDIN_FILENO);
+        }
+        if (to != -1) {
+            dup2(to, STDOUT_FILENO);
+        }
+    } else {
+        if (from != -1) {
+            dup2(from, STDERR_FILENO);
+        }
+        if (to != -1) {
+            dup2(to, STDERR_FILENO);
+        }
+    }
+}
+
+void mexec(vector<string>& args, std::map<string, string>& vars, bool background, int fromFile, int toFile, bool out) {
+    if (args[0] == "mecho") {
         args[0] = args[0].replace(0, 1, "");
     }
     pid_t pid = fork();
     if (pid == -1) {
         cerr << "Error: cannot fork" << endl;
         exit(EXIT_FAILURE);
-    } else if (pid > 0) {
+    } else if (pid > 0 && !background) {
         int status;
         waitpid(pid, &status, 0);
     } else {
+        if (background) {
+            close(0);
+            close(1);
+            close(2);
+        }
+        setInOut(fromFile, toFile, out);
         setPath();
         vector<const char*> c_func_args;
         for (int i = 0; i < args.size(); i++) {
@@ -127,6 +152,6 @@ void mexport(vector<string>& args, std::map<string, string>& vars) {
     }
 }
 
-void mexec_script(vector<string>& args) {
-
+void exec_file(std::vector<std::string> args, std::map<std::string, std::string> vars) {
+    mexec(args, vars, false, -1, -1, false);
 }
