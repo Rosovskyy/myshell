@@ -8,9 +8,7 @@ This program works like a real shell: it can read commands from stding and execu
   ```bash
   $ git clone https://github.com/Rosovskyy/myshell
   $ cd myshel
-  $ mkdir build
-  $ cd build
-  $ cmake -G"Unix Makefiles" ..
+  $ cmake -G"Unix Makefiles"
   $ make
   ```
   
