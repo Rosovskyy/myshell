@@ -1,5 +1,5 @@
 //
-// Created by arelav on 01.11.19.
+// Created by Serhiy Rosovskyy on 10/29/19.
 //
 
 #ifndef MYSHELL_WILDCARDS_H

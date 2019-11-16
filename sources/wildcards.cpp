@@ -2,20 +2,6 @@
 
 namespace fs = std::experimental::filesystem;
 
-//int main(int argc, char *argv[]) {
-//    std::vector<std::string> all_args(argv + 2, argv + argc), wild_args;
-//    std::copy_if (all_args.begin(), all_args.end(), std::back_inserter(wild_args), [](const std::string &str)
-//    {return (str.find('*') != std::string::npos ||
-//             str.find('?') != std::string::npos ||
-//             str.find('[') != std::string::npos) ||
-//            str.find(']') != std::string::npos;} );
-//    if (!wild_args.empty())
-//        std::vector<std::string> neww = parse_args(wild_args);
-//
-//    return 0;
-//}
-
-
 std::vector<std::string> parse_args(std::vector<std::string> &wildcards) {
     std::vector<std::string> files, final_ar;
     std::string path, file_name;
