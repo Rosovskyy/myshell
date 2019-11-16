@@ -64,6 +64,8 @@ bool wildcard_matches(const std::string &pattern, const std::string &filename) {
         if (pattern.find('-') == std::string::npos){
             std::string letters = pattern.substr(pattern.find('[')+1, pattern.find(']') - pattern.find('[')-1);
             for (const char &let: letters){
+//                std::cout << "for " << let << " pattern " << pattern.substr(0, pattern.find('[')) + let + pattern.substr(pattern.find(']')+1)<<"\n";
+//                std::cout << filename << "\n";
                 if ((pattern.substr(0, pattern.find('[')) + let + pattern.substr(pattern.find(']')+1)) == filename){
                     return true;
                 }

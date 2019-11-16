@@ -2,6 +2,9 @@
 #include "../headers/variables.h"
 #include "../headers/helpers.h"
 
+#include <unistd.h>
+#include <wait.h>
+
 #define WRONG_TXT "Command has been improperly used. Use "
 
 void get_current_path(string *str) {
