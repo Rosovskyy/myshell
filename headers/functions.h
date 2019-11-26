@@ -12,6 +12,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <map>
+#include <sys/wait.h>
 
 using namespace std;
 

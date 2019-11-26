@@ -1,5 +1,6 @@
 #include "../headers/helpers.h"
 #include "../headers/functions.h"
+#include "../headers/wildcards.h"
 
 void execute(std::vector<std::string>& args, std::map<std::string, std::string>& vars) {
     int err = 0;
@@ -67,7 +68,26 @@ int main(int argc, char *argv[]) {
         for (auto &t : arguments) {
             args.push_back(t);
         }
-        execute(args, globalVariables);
+
+        std::vector<std::string> all_args(args.begin() + 1, args.begin() + args.size()), wild_args;
+        std::copy_if (all_args.begin(), all_args.end(), std::back_inserter(wild_args), [](const std::string &str)
+        {return (str.find('*') != std::string::npos ||
+                 str.find('?') != std::string::npos ||
+                 str.find('[') != std::string::npos) ||
+                str.find(']') != std::string::npos;} );
+        if (!wild_args.empty()) {
+            std::vector<std::string> neww = parse_args(wild_args);
+            std::copy_if (all_args.begin(), all_args.end(), std::back_inserter(neww), [](const std::string &str)
+            {return (str.find('*') == std::string::npos &&
+                     str.find('?') == std::string::npos &&
+                     str.find('[') == std::string::npos) &&
+                    str.find(']') == std::string::npos;} );
+            neww.insert(neww.begin(), 1, args[0]);
+            execute(neww, globalVariables);
+        } else {
+            execute(args, globalVariables);
+        }
+
         free(buf);
         get_current_path(&s);
         std::cout << s;
