@@ -4,6 +4,10 @@
 #include "redir.h"
 #include "pipeline.h"
 
+void get_current_path(string *str) {
+    *str = boost::filesystem::current_path().string();
+}
+
 std::string strip(std::string str){
     if (str.back() == ' '){
         str = str.substr(0, str.size() - 1);

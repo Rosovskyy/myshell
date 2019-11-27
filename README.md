@@ -11,6 +11,7 @@ This program works like a real shell: it can read commands from stding and execu
   $ cmake -G"Unix Makefiles"
   $ make
   ```
+  If you want to use our own script(myls, mycat..) then you need to move to *test* directory.
   
 ## Libraries
   * readline - ```sudo apt-get install libreadline-dev```
